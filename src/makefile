@@ -1,6 +1,8 @@
 INLINE_LIMIT=-finline-limit=100000
 #INLINE_WARN=-Winline
 STATIC=-static
+#STATIC=-dynamic
+#SHELL=/bin/bash
 
 ######### Profile
 #CLFLAGS=-pg -g $(STATIC) -DNDEBUG $(INLINE_WARN) $(INLINE_LIMIT) 
@@ -19,7 +21,7 @@ CLFLAGS=-g
 
 BASEDIR=..
 
-GPP=g++
+GPP=g++-4.9
 FLEX=flex
 BISON=bison
 
@@ -391,7 +393,7 @@ depend:
 	    echo '# dependencies generated on: ' `date` ; \
 	    echo '#' ; \
 	    for i in $(CPPFILES); do \
-	        echo -n "$(OBJDIR)/" ; \
+	        echo "$(OBJDIR)/"" \\" ; \
 	        $(GPP) -MM $(CFLAGS) $$i ; \
 	        echo; \
 	    done \
